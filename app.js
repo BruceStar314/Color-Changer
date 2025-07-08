@@ -1,19 +1,23 @@
-let btnNext = document.getElementById("btn-next");
-let letters = document.getElementById("letters");
-
-const colors = ["red", "green", "blue", "yellow", "pink", "orange"];
-const lettersArr = ["R", "G", "B", "Y", "P", "O"];
+let colorPicker = document.getElementById("colorPicker");
+let applyColor = document.getElementById("applyColor");
+let container = document.getElementById("container");
 
 let index = 0;
 let count = 0;
+container.style.backgroundColor = "#fff";
 
-btnNext.addEventListener("click", () => {
-  index++;
-  if (index >= colors.length) {
-    index = 0;
-  }
-  document.body.style.backgroundColor = colors[index];
-  letters.textContent = lettersArr[index];
+applyColor.addEventListener("click", () => {
+  container.style.backgroundColor = colorPicker.value;
   count++;
-  console.log("You are on the color: " + colors[index]);
 });
+
+if (applyColor.value === "#000000") {
+  applyColor.style.color = colorPicker.value;
+  count++;
+}
+
+if (colorPicker.value === "#000000") {
+  applyColor.style.color = "#fff";
+} else {
+  applyColor.style.color = "initial";
+}
